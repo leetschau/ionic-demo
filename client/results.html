@@ -1,0 +1,36 @@
+<template name="SearchResults">
+  {{#contentFor "headerButtonLeft"}}
+    {{> ionNavBackButton path="home"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <div class="col text-right">
+      <button class="button button-clear button-stable">登录</button>
+      <button class="button button-clear button-stable">注册</button>
+    </div>
+  {{/contentFor}}
+  {{#ionView}}
+    {{#ionContent}}
+      {{#ionList class="my-class"}}
+        {{#each fairs}}
+
+          {{#ionItem path="fairDetails" class="item-icon-right item-thumbnail-left"}}
+            <img src="/images/main.png">
+            <h2>John Smith</h2>
+            <p>(555) 555-1212</p>
+            {{> ionIcon icon="ios-arrow-right"}}
+          {{/ionItem}}
+
+        {{/each}}
+      {{/ionList}}
+    {{/ionContent}}
+
+    {{#ionTabs class="tabs-dark tabs-icon-top"}}
+      {{> ionTab title="网站首页" path="Home" iconOff="ios-home-outline" iconOn="ios-home"}}
+      {{> ionTab title="私人定制" path="Customize" iconOff="ios-people-outline" iconOn="ios-people"}}
+      {{> ionTab title="出展摊位" path="Seats" iconOff="ios-cart-outline" iconOn="ios-cart"}}
+      {{> ionTab title="官方微信" path="WeiXin" iconOff="ios-chatbubble-outline" iconOn="ios-chatbubble"}}
+      {{> ionTab title="联系我们" path="ContactUs" iconOff="ios-telephone-outline" iconOn="ios-telephone"}}
+    {{/ionTabs}}
+  {{/ionView}}
+</template>

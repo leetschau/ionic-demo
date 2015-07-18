@@ -5,8 +5,8 @@ Template.Home.helpers({
 });
 
 Template.Home.events({
-  'click button': function () {
-    // increment the counter when button is clicked
-    Session.set('counter', Session.get('counter') + 1);
+  'click .btn-search': function (e, t) {
+    var userInput = t.find('.user-input').value;
+    Router.go('/results/' + userInput + '/page/1?type=basic');
   }
 });
