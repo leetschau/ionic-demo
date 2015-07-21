@@ -6,10 +6,9 @@ Router.route('/', function() {
   this.render('Home');
 }, { name: 'home'} );
 
-Router.route('/results/:inp/page/:pageNo', function() {
+Router.route('/results/:inp', function() {
   var that = this;
-  Meteor.call('getFairs', this.params.inp, this.params.pageNo,
-    this.params.query.type, this.params.query.filter,
+  Meteor.call('getFairs', this.params.inp,
     function (err, res) {
       if (err) {
         alert(err);
