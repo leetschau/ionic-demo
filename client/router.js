@@ -19,14 +19,15 @@ Router.route('/results/:inp', function() {
   this.render( 'WaitingforResult' );
 });
 
-Router.route('/details/:_id', function () {
+Router.route('/details/:_id', function() {
   var that = this;
-  Meteor.call('getFairContext', this.params._id, function (err, result) {
-    if (err) {
-      alert(err);
-    } else {
-      that.render('FairDetails', { data : result });
-    }
+  Meteor.call('getFairDetails', this.params._id,
+    function (err, res) {
+      if (err) {
+        alert(err);
+        return;
+      } 
+      that.render('FairDetails', { data : res });
   });
-  this.render('WaitingforResult');
+  this.render( 'WaitingforResult' );
 }, { name: 'fairDetails' });

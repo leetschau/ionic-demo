@@ -1,3 +1,69 @@
 <template name="FairDetails">
-  this is details
+  {{#contentFor "headerButtonLeft"}}
+    {{> ionNavBackButton text="abc"}}
+  {{/contentFor}}
+
+  {{#contentFor "headerTitle"}}
+    <div class="col text-right">
+      <button class="button button-clear button-stable">登录</button>
+      <button class="button button-clear button-stable">注册</button>
+    </div>
+  {{/contentFor}}
+
+  {{#ionView}}
+    {{#ionContent}}
+      {{#with fairInfo}}
+        <div class="row">
+          <h1>展会详情</h1>
+        </div>
+        <hr>
+        <div class="row">
+          <h2>{{chnName}}</h2>
+        </div>
+        <div class="row">
+          <div class="col col-70">
+            {{#if logo}}
+              <img src="http://123.57.75.184:5000/user_data/{{logo}}" width="100%">
+            {{else}}
+              <img src="/images/defaultFairLogo.gif" width="100%"/>
+            {{/if}}
+          </div>
+          <div class="col col-30">
+            <p>时间：{{time}}</p>
+            <p>地点：{{position}}</p>
+            <p>展会范围：{{category}}</p>
+            {{#with ../evaluations}}
+              <p>评分：{{rankAvg}}</p>
+              <p>评价：{{rankNum}}人评价</p>
+            {{/with}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col">
+            <button class="button button-block button-positive">
+              报名参展
+            </button>
+          </div>
+          <div class="col">
+            <button class="button button-block button-positive">
+              观众登记
+            </button>
+          </div>
+        </div>
+        <hr>
+        <h3>展会详情</h3>
+        <p>目前还没有展会详情</p>
+      {{/with}}
+
+    {{/ionContent}}
+
+    {{#ionTabs class="tabs-dark tabs-icon-top"}}
+      {{> ionTab title="网站首页" path="Home" iconOff="ios-home-outline" iconOn="ios-home"}}
+      {{> ionTab title="私人定制" path="Customize" iconOff="ios-people-outline" iconOn="ios-people"}}
+      {{> ionTab title="出展摊位" path="Seats" iconOff="ios-cart-outline" iconOn="ios-cart"}}
+      {{> ionTab title="官方微信" path="WeiXin" iconOff="ios-chatbubble-outline" iconOn="ios-chatbubble"}}
+      {{> ionTab title="联系我们" path="ContactUs" iconOff="ios-telephone-outline" iconOn="ios-telephone"}}
+    {{/ionTabs}}
+  {{/ionView}}
 </template>

@@ -1,6 +1,6 @@
 <template name="SearchResults">
   {{#contentFor "headerButtonLeft"}}
-    {{> ionNavBackButton path="home"}}
+    {{> ionNavBackButton}}
   {{/contentFor}}
 
   {{#contentFor "headerTitle"}}
@@ -11,15 +11,18 @@
   {{/contentFor}}
   {{#ionView}}
     {{#ionContent}}
-      {{#ionList class="my-class"}}
+      {{#ionList}}
         {{#each fairs}}
 
-          {{#ionItem path="fairDetails" class="item-icon-right item-thumbnail-left"}}
-            <img src="http://123.57.75.184:5000/user_data/{{logo}}">
+          {{#ionItem path="fairDetails" _id="this._id" class="fairRecord item-thumbnail-left"}}
+            {{#if logo}}
+              <img src="http://123.57.75.184:5000/user_data/{{logo}}"/>
+            {{else}}
+              <img src="/images/defaultFairLogo.gif" />
+            {{/if}}
             <h2>{{chnName}}</h2>
             <p>{{position}}</p>
             <p>{{time}}</p>
-            {{> ionIcon icon="ios-arrow-right"}}
           {{/ionItem}}
 
         {{/each}}
